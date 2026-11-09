@@ -14,3 +14,5 @@ Y luego se cambio el Authorization con el token mio
 
 `Necesito que investigues cuál es la manera de protección de rutas en Next.js. Usa el Context7 MCP`
 
+Instalación de las skills de Fernando Herrera para SDD
+`npx skills add klerith/fernando-skills` 
