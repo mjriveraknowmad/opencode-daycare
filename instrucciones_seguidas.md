@@ -62,5 +62,15 @@ Al teminar pusimos a modo build:
 Con esto creó `.opencode/agent/spec-verifier.md` y colateralmente el `.opencode/command/verify-spec.md`
 
 
+Ejecutamos el agente, que verifique el spec 01 (el del home, creado antes):
+`@spec-verifier @specs\01-home-feed.md` 
+Con esto, en el md se marcarán con una "x" los criterios de aceptación (en mi caso ya los marcara antes)
+
+
+
+Y al terminar le pusimos que
+`Actualiza el AGENTS.md con el agente que nosotros acabamos de crear y el comando de /verify-spec".`
+
+
 
 

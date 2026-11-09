@@ -78,6 +78,10 @@ Do not write code during `/spec`, and never commit on the user's behalf during `
 - /spec Usaremos esta habilidad para crear las especificaciones.
 - /spec-impl Usaremos esta skill para hacer las implementaciones.
 
+## Agents
+
+- `spec-verifier`: Verifies acceptance criteria of a spec file. Reviews implementation against each criterion, fixes code/spec issues found, and marks checkboxes. Uses Playwright MCP with vision to compare screenshots against references, and Context7 MCP to validate Next.js best practices.
+
 ## Reglas de código
 
 - Usar código limpio, nombres, funciones, variables, etc. en inglés.
