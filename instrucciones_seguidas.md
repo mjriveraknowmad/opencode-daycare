@@ -8,3 +8,7 @@
 
 Se agregó `/.playwright-mcp` en el .gitignore
 
+Para instalar el mcp de playwright
+`npx ctx7 setup`
+Y luego se cambio el Authorization con el token mio
+
