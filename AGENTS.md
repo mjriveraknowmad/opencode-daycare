@@ -71,3 +71,9 @@ npx next typegen           # regenerate route types if .next is missing (needed 
 3. `/spec-impl NN-slug` — refuses non-approved specs, creates/switches to branch `spec-NN-slug` (unless `AutoCreateBranch: false` in `specs/.spec-config.yml`), then implements plan steps one at a time, pausing for review after each.
 
 Do not write code during `/spec`, and never commit on the user's behalf during `/spec-impl`.
+
+
+## Spec Driven Development - Skills
+
+- /spec Usaremos esta habilidad para crear las especificaciones.
+- /spec-impl Usaremos esta skill para hacer las implementaciones.
