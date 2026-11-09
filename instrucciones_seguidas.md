@@ -74,3 +74,15 @@ Y al terminar le pusimos que
 
 
 
+Para agregar especificaciones para el desarrollo de las pantallas de "kids" (perfil y lista), usando los skills de F. Herrera: 
+` /spec Necesitamos implementar únicamente el diseño como se ve en las pantallas de referencia @references/pantallas/perfil-nino.dc.html y @references/pantallas/ninos.dc.html . Solo quiero las interfaces y los componentes` 
+En las respuestas:
+- Debe de navegar a /kids /kids/[id], No quiero nombres de estas páginas en español.
+- Reutilizar los componentes existentes
+- Datos del mock en un archivo indepediente, si es posible
+- Búsqueda en el lugar del frontend, todavía no quiero una conexión con el backend.
+- Vamos a mantener una enumeración con ciertas alergias o ciertos tipos, y también sus colores. Por ahora todo ficticio.
+- Los datos de Resumen del día y Padres vinculados son placeholders, es decir todo fictio, por ahora.
+- 
+
+
