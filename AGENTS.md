@@ -28,3 +28,46 @@ Retain qualifying friction even if it is later fixed or worked around; record th
 Before the final response, run one reporting pass. If candidates remain, from this file's directory run `npx --no-install next internal agent-feedback-instructions` once without piping or truncating its output. Follow its output or error guidance. If a network sandbox blocks it, retry with network access; if it still returns no output, continue normally.
 
 <!-- END:nextjs-agent-feedback -->
+
+## MCPs
+- Context 7 Usaremos este MCP para obtener documentación actualizada del framework.
+
+## What this repo is
+
+A Spanish-language daycare app (daycare feed, children, families, posts). It is still the `create-next-app` scaffold: only `app/layout.tsx` and `app/page.tsx` exist. The real UI target lives in `references/`:
+
+- `references/pantallas/*.dc.html` — design mockups (`feed`, `login`, `ninos`, `perfil-nino`, `resumen-dia`, etc.). Reference only, never imported or served.
+- `references/screenshots/*.png` — expected rendered output for those screens.
+
+`instrucciones_seguidas.md` is a log of past setup prompts, not a spec.
+
+## Stack quirks (verified against config, not docs)
+
+- Next.js **16.4.5** App Router, React 19.3, TypeScript strict, Turbopack.
+- `cacheComponents: true` + `partialPrefetching: true` in `next.config.ts`. Data fetching is dynamic by default: cache explicitly with `"use cache"` / `cacheLife` / `cacheTag`, and wrap async uncached components in `<Suspense>` with a fallback. Node runtime only — do not add a `runtime` route segment export.
+- Tailwind **v4** is wired through `turbopack.rules` (`*.css` → `@tailwindcss/turbopack`) in `next.config.ts`, with `@import "tailwindcss"` in `app/globals.css`. There is **no** `postcss.config.*` or `tailwind.config.*` — don't add them; that is not how this project is configured.
+- Path alias `@/*` maps to the repo root (so `@/app/...`), not to `src/`.
+- `LayoutProps<"/">` and similar are global types generated into `.next/dev/types`; `next-env.d.ts` imports them and must not be edited.
+
+## Commands
+
+```bash
+npm run dev                # next dev (writes .next/dev, regenerates AGENTS.md blocks)
+npm run build              # next build
+npx eslint app             # lint app code only
+npx tsc --noEmit           # typecheck
+npx next typegen           # regenerate route types if .next is missing (needed by tsc)
+```
+
+- **`npm run lint` currently fails** and is not a useful signal: bare `eslint` lints the whole repo, including the mockup bundle `references/pantallas/support.js` (2 errors). Use `npx eslint app` (or another explicit path) instead of changing the mockups or the shared ESLint config to silence them.
+- No test runner, test script, or CI is configured. Verify behavior in the browser through the Playwright MCP (`opencode.json`); artifacts go to the gitignored `.playwright-mcp/`.
+
+## Spec-driven workflow
+
+`.agents/skills/spec` and `.agents/skills/spec-impl` (Fernando Herrera skills, pinned in `skills-lock.json`) are the intended flow for features:
+
+1. `/spec <feature>` — asks questions first, then writes `specs/NN-slug.md` with `**Status:** Draft`. `specs/` does not exist yet; the next number starts at `01`.
+2. A human flips the status to `Approved`; the agent must not do this.
+3. `/spec-impl NN-slug` — refuses non-approved specs, creates/switches to branch `spec-NN-slug` (unless `AutoCreateBranch: false` in `specs/.spec-config.yml`), then implements plan steps one at a time, pausing for review after each.
+
+Do not write code during `/spec`, and never commit on the user's behalf during `/spec-impl`.

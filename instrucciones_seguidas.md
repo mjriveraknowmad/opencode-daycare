@@ -16,3 +16,11 @@ Y luego se cambio el Authorization con el token mio
 
 Instalación de las skills de Fernando Herrera para SDD
 `npx skills add klerith/fernando-skills` 
+
+Añadimos en el agents.md:
+`
+- Context 7 Usaremos este MCP para obtener documentación actualizada del framework.
+`
+Y luego ejecutamos 
+`\init` 
+
