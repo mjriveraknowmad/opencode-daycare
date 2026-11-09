@@ -12,3 +12,5 @@ Para instalar el mcp de playwright
 `npx ctx7 setup`
 Y luego se cambio el Authorization con el token mio
 
+`Necesito que investigues cuál es la manera de protección de rutas en Next.js. Usa el Context7 MCP`
+
