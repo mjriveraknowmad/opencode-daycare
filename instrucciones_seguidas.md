@@ -24,3 +24,6 @@ Añadimos en el agents.md:
 Y luego ejecutamos 
 `\init` 
 
+Para empezar con el desarrollo, usando los skills de F. Herrera: 
+`/spec Ocupamos implementar la plantilla @references/pantallas/feed.dc.html como nuestro home / . Aún no tenemos autenticación, ni base de datos. Solo necesito que el estilo luzca idéntico al proporcionado.`
+
