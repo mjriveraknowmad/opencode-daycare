@@ -83,6 +83,9 @@ En las respuestas:
 - Búsqueda en el lugar del frontend, todavía no quiero una conexión con el backend.
 - Vamos a mantener una enumeración con ciertas alergias o ciertos tipos, y también sus colores. Por ahora todo ficticio.
 - Los datos de Resumen del día y Padres vinculados son placeholders, es decir todo fictio, por ahora.
-- 
 
+Implementamos los descrito en 02-kids-list-and-profile.md, primero cambiamos a "**Estado:** Aprobado" y luego ejecutamos
+`/spec-impl @specs/02-kids-list-and-profile.md` 
 
+Y luego verificamos usando el agente que creamos antes:
+`@spec-verifier @specs/02-kids-list-and-profile.md` 
