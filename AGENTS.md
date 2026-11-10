@@ -78,10 +78,12 @@ Do not write code during `/spec`, and never commit on the user's behalf during `
 - /spec Usaremos esta habilidad para crear las especificaciones.
 - /spec-impl Usaremos esta skill para hacer las implementaciones.
 - /verify-spec Usaremos este comando para verificar los criterios de aceptación de una spec.
+- **Database specs**: Cualquier archivo de especificación relacionado con la base de datos debe guardarse en la carpeta `specs/database/`.
 
-## Agents
+## Installed Skills
 
-- `spec-verifier`: Verifies acceptance criteria of a spec file. Reviews implementation against each criterion, fixes code/spec issues found, and marks checkboxes. Uses Playwright MCP with vision to compare screenshots against references, and Context7 MCP to validate Next.js best practices.
+- **supabase**: Use for any Supabase-related task (database, auth, edge functions, realtime, storage, RLS, migrations, security audits). Loads comprehensive security guidelines, CLI/MCP usage, and best practices.
+- **supabase-postgres-best-practices**: Use when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations. Covers query performance, connection management, security & RLS, schema design, concurrency, and advanced features.
 
 ## Reglas de código
 
