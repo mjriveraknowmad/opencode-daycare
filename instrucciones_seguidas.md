@@ -126,3 +126,9 @@ Con /spec se crearon las specificaciones de login, la modal de añadir un niño,
 
 10. **Sincroniza tu entorno local:**  
     Cambia a la rama `main`, haz *pull* para traer los cambios y elimina la rama local si es necesario.
+
+
+
+## Ejemplo Prompts para supabase/spec Vamos a crear la primera tabla de daycares.
+
+/spec Puedes ver la referencia en @docs. Y ocupamos aplicar el patrón de migraciones para impactar Supabase.
