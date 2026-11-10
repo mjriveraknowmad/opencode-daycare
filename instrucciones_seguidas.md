@@ -129,6 +129,35 @@ Con /spec se crearon las specificaciones de login, la modal de añadir un niño,
 
 
 
-## Ejemplo Prompts para supabase/spec Vamos a crear la primera tabla de daycares.
+## Ejemplo Prompts para supabase y otros spec (recordar seguir el "Flujo de trabajo recomendado", recordando el @spec-verifier para validarlos )
+
+/spec Vamos a crear la primera tabla de daycares
 
 /spec Puedes ver la referencia en @docs. Y ocupamos aplicar el patrón de migraciones para impactar Supabase.
+
+/spec Ocupamos implementar la tabla de usuarios y sus enumeraciones respectivas. Revisa @db-schema para tener las referencias de lo que tenemos que crear. Ocuparemos un usuario puede tener un daycare, pero un "daycare" puede tener muchos usuarios. Usaremos un usuario staff para poder probar, cuyo email será fernando@google.com y su password será Abc123456@
+
+"Actualiza el AGENTS.md. Necesito que cualquier archivo de especificación creado si tiene que ver con la base de datos debe de ir en la carpeta de specs/database"
+
+
+/spec Ocupamos implementar la parte de autenticación de nuestra aplicación, Recordando de que solo es email y password, Una vez creada la autenticación, también ocupamos hacer la protección de rutas. Usa el Context7 MCP para determinar cómo protegemos las rutas. Esto ya es real contra Supabase
+
+/spec Vamos a implementar el mantenimiento de niños, (tabla children y rooms), ver @db-schema para las referencias recomendadas, Vamos a crear tres rooms por defecto. Uno de ellos tiene que ser la Sala Soles, Y no ocupamos ningún niño en la tabla. La pantalla a trabajar es /kids . Recuerda generar los archivos de migraciones.
+
+/spec Vamos a trabajar en la vinculación de un padre a un niño, [Image 1], Vamos a generar un correo electrónico que va a ser enviado utilizando resend.com, el paquete de node, Necesitamos hacer la parte del registro de usuario utilizando el código y la invitación que vamos a enviar por correo. Recuerda generar los archivos de migraciones.
+
+http://localhost:3000/activate?code=ZZRA2 Ese enlace debería de funcionar pero cuando ingreso a la pantalla de activar la cuenta. El problema es que la página /activate es pública (sin autenticación), pero la política RLS de invitations requiere auth.uid() para leer. Como el usuario no está logueado, auth.uid() es null y la consulta falla.
+
+
+
+
+Primero se añadió la SUPABASE_SERVICE_ROLE_KEY en el .env, que he obtenido en el dashboard de Supabase -> Project Settings -> API Keys -> Pestaña Legacy anon, service_role API keys ->  service_role (secret). En Supabase, tambien fuimos a Autentication > Configuration > Sign In/ Providers > Deschequeamos el "Allow manual linking".  Y luego el prompt fue:
+"Hay un error y es porque signUp envía email de confirmación y hay rate limit. Para el flujo de activación no necesitamos confirmación por email (ya se verificó con el código de invitación).
+He añadido la SUPABASE_SERVICE_ROLE_KEY en el .env, para usar el Admin API y crear el usuario sin enviar email. Modifica el flujo de activación para solucionar el error."
+
+
+"Hay un problema porque después de crear el usuario con el Admin API, no hay sesión activa todavía. El cliente normal (supabase) no tiene auth.uid(), así que la política RLS de parent_children falla. Soluciona el error."
+
+
+
+
