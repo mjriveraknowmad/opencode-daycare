@@ -158,6 +158,131 @@ He añadido la SUPABASE_SERVICE_ROLE_KEY en el .env, para usar el Admin API y cr
 
 "Hay un problema porque después de crear el usuario con el Admin API, no hay sesión activa todavía. El cliente normal (supabase) no tiene auth.uid(), así que la política RLS de parent_children falla. Soluciona el error."
 
+"Actualiza el Readme para que explique como levantar el proyecto. Además recuerda que estamos usando MCP de Supabase, quiero que  en el Readme tambien expliques como se usa el CLI de Supabase para el login y autenticarse"
+
+
+
+## Ejemplo Prompt para crear un agente secundario para revisar best practices de react
+
+Con modo build :
+```
+Vamos a crear un nuevo agente
+
+react-best-practices: Va a aplicar las mejores prácticas de React en todos los archivos que nosotros le indiquemos y vas a usar context-7 para verificar si está siguiendo las buenas prácticas y las últimas recomendaciones de la documentación
+```
+
+Ha realizado la pregunta:
+Para crear el agente react-best-practices necesito escribir en .opencode/agent/, pero los permisos actuales bloquean edits ahí. ¿Cómo prefieres proceder?
+Hemos respondido:
+Agregar permisos para .opencode/
+
+
+Luego para usarlo:
+`Usa el subagente @react-best-practices para revisar el componente XYZ.ts y el component zYx.ts, puedes usar dos agentes para hacer la revisión más rápido`
+
+Luego puedes usar las teclas de flechas para movernos por esos dos subagentes... y con ctrl+x flejaAbajo
+
+
+
+## Ejemplo Prompt para crear un agente especializado para manejar la Base de datos
+
+Con modo plan, para que pregunte lo que necesite:
+
+```
+Ocupamos crearnos un subagente llamado db-migrator. Este es un agente que se va a encargar de asegurarse de que existan las migraciones y de aplicarlas
+```
+
+Escogimos:
+- subagente automático
+
+- ¿De dónde saca el agente qué migraciones necesita crear? ¿De specs de base de datos, del reference db-schema, o ambos? Dijimos:
+A todos los specs que involucren base de datos
+
+
+- ¿El agente solo aplica migraciones existentes, o también las crea si faltan?     Validar + crear + aplicar
+
+
+Luego para usarlo:
+`/db-migrate revisa si hay alguna migración pendiente de crear`
+
+
+
+
+
+## Ejemplo Prompt para crear un agente especializado en accesibilidad
+
+Con modo plan, para que pregunte lo que necesite:
+`Vamos a crear el siguiente agente @accessibility-checker La idea es que nos ayude con la accesibilidad y seguir las buenas prácticas de WCAG 2.2 AA, Yo te voy a indicar qué archivo es el que debes de revisar`
+
+¿Solo React/TSX o también HTML/CSS puro? -> Dado que el proyecto es Next.js, ¿te enfoco en TSX + Tailwind?           Sí también
+
+¿El agente debe poder aplicar fixes automáticamente o solo reportar?                                                 Sí debe de aplicar los fixes
+
+¿Quieres que incluya verificación de colores del design system (#f6ecdf, #d9583c, etc.) contra contraste WCAG?    Sí que vaya con el contraste WCAG
+
+
+Sí, Creemos el agente y el comando
+
+
+
+Luego para usarlo:
+`@accessibility-checker @app/(auth)/login/page.tsx`
+
+Este agente tambien se puede usar pulsando Ctl+Tab, por ser un agente como Plan o Build , para que esto no pase hay que ir a su .md y en lugar de mode: all, hay que poner mode: subagent
+
+
+
+
+
+## Ejemplo Prompt para crear un agente especializado en seguridad de la base de datos
+
+Con modo plan, para que pregunte lo que necesite:
+
+```
+Necesitamos crear un agente nuevo el cual se va a llamar db-security-auditor , y que pueda invocar con @db-security-auditor. Este agente previene fugas de datos entre niños y padres por role of security mal configurado y demás buenas prácticas de base de datos especializadas en Supabase
+```
+
+
+Sí, Creemos el agente y el comando
+
+
+Luego para usarlo:
+`@db-security-auditor Revisa la tabla de usuarios, y solo la tabla de usuarios`
+
+Finalmente en el curso no se aplicó.
+
+
+
+## Ejemplo Prompt de creación de un cron job
+
+
+```
+Necesitamos ejecutar un cron job que haga opencode run /db-audit Todos los viernes a las 6:00 de la tarde.
+
+Necesito ejemplos de cómo se implementaría con cada una de las siguientes opciones:
+
+1 - Cron del sistema (macOS/Linux)
+
+1.1 - Task Scheduler (recomendado - GUI)
+
+1.2 - PowerShell (script + scheduled task)
+
+1.3 - launchd (nativo macOS - recomendado)
+
+2 - Supabase Cron (pg_cron) - si el agente hace tareas de base de datos
+
+3 - GitHub Actions - si el repo está en GitHub
+
+Si no puedes hacerlo con el de GitHub, no te preocupes, sáltatelo
+```
+
+
+
+
+
+## Ejemplo Prompt para actualizar los Agents.md con los agentes creados hasta el momento
+
+`Actualiza el Agents.md con los agentes que actualmente tenemos creados, con una breve descripción de su labor`
 
 
 
