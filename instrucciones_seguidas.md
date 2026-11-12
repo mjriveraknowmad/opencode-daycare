@@ -277,7 +277,30 @@ Si no puedes hacerlo con el de GitHub, no te preocupes, sáltatelo
 ```
 
 
+## Ejemplo Prompt usando /grill-me
 
+Primero se tiene que instalar e skill de Pocock
+`npx skills@latest add mattpocock/skills --skill=grill-me`
+
+Y luego para usarlo:
+`/grilling Necesito que creemos la publicación de nuevas entradas como miembros del staff, con imágenes o sin imágenes`
+
+Y luego se empiezan a responder toooooda la batería de preguntas.
+Las respuestas suelen tener el patrón: 
+"Pregunta número 1. [Aquí la respuesta]"
+"Pregunta número 2. [Aquí la respuesta]"
+
+Luego le pedimos que guarde el spec.
+
+Luego se revisa el spec .md.
+
+Finalmente hacemos la implentación de spec, recordando antes poner: "**Estado:** Aprobado" y luego ejecutando:
+`/spec-impl @specs/12-create-posts-with-images.md` 
+y luego seguir las instrucciones de "Flujo de trabajo recomendado"
+(al comprobar nos vamos a Supabase > Storage > Files para ver si están subidas las imágenes)
+
+Prompt para que solucione el problema de las imágenes
+`A la hora de ver un "post", la imagen no aparece pero sí efectivamente están en Supabase.`
 
 
 ## Ejemplo Prompt para actualizar los Agents.md con los agentes creados hasta el momento
@@ -286,3 +309,89 @@ Si no puedes hacerlo con el de GitHub, no te preocupes, sáltatelo
 
 
 
+
+## Ejemplo OpenSpec
+
+`npm install -g @fission-ai/openspec@latest`
+
+`openspec init`
+Seleccionamos OpenCode
+
+Luego en openCode:
+`Necesito que expliques a @openspec/config.yaml Cual es el objetivo de esta aplicación de forma corta y modifica el archivo yaml`
+
+
+En el curso se usa :
+OpenSpec - Explore y new
+OpenSpec - Apply
+OpenSpec - Verify
+OpenSpec - Archive
+
+
+
+`/opsx-explore Necesitamos hacer una separación entre el panel del staff y la parte de la familia`
+Ejemplo de preguntas y respuestas¿Cómo lo estás pensando vos? ¿Querés que sean:
+
+A) Rutas separadas (/staff y /family) con layouts propios y middleware que redirige según rol
+B) Misma URL pero el layout cambia dinámicamente según el rol
+C) Algo intermedio - rutas separadas pero con componentes compartidos
+
+Y otra pregunta: ¿un usuario con rol parent debería poder acceder a rutas de staff (aunque sea para ver algo limitado), o la separación debe ser hermética?
+
+Eso es lo que estoy buscando
+
+Estoy pensando rutas separadas para el staff y para la familia efectivamente.
+
+Recuerda que ya no existe el middleware en Next. Estamos trabajando con proxy y sí quiero un proxy para validar el staff y la familia.
+
+Un usuario con el rol de parent no debe de ver las rutas de staff
+
+
+
+1. ¿Qué pasa con / (root)?   ¿Redirige automáticamente a /staff o /family según rol?   ¿O querés que / sea una landing page pública?   
+2. ¿Qué hacemos con las rutas que ya existen?   /kids -> ¿se mueve a /staff/kids?   El feed actual en / -> ¿se duplica en /staff (feed staff) y /family (feed familia)?   
+3. ¿El proxy redirige o rechaza? Si un parent intenta entrar a /staff/kids, ¿lo redirigís silenciosamente a /family?   ¿O le mostrás un error 403?   
+4. ¿Los layouts son distintos?  
+
+1. Pasa a ser /staff o /family según el rol   
+2. Efectivamente pasa a ser staff/kids, 
+3. Podemos tener uno especializado para la familia y otro especializado para el staff, sin ningún problema 
+
+
+
+`/opsx- apply`
+
+
+`openspec config profile`
+
+Current profile settings
+  Delivery: both
+  Workflows: 7 selected (custom)
+  Delivery = where workflows are installed (skills, commands, or bot
+  Workflows = which actions are available (propose, explore, apply,
+
+✓ What do you want to configure? Delivery and workflows
+✓ Delivery mode (how workflows are installed): Commands only
+? Select workflows to make available:
+  [x] Propose change
+  [x] Explore ideas
+  [ ] New change
+  [ ] Continue change
+  [x] Apply tasks
+  [x] update
+  [ ] Fast-forward
+  [x] Sync specs
+  [x] Archive change
+  [ ] Bulk archive
+ >[x] Verify change
+  [ ] Onboard
+
+
+`openspec view`
+
+`Sí apliquemos la parte de las correcciones de los Critical Issues encontrados`
+
+
+Más info:
+https://github.com/Fission-AI/OpenSpec/tree/main
+https://github.com/Fission-AI/OpenSpec/blob/main/docs/getting-started.md
