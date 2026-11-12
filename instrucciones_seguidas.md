@@ -279,6 +279,8 @@ Si no puedes hacerlo con el de GitHub, no te preocupes, sáltatelo
 
 ## Ejemplo Prompt usando /grill-me
 
+Realiza preguntas exhaustivas para aclarar dudas antes de crear la especificación.
+
 Primero se tiene que instalar e skill de Pocock
 `npx skills@latest add mattpocock/skills --skill=grill-me`
 
@@ -322,14 +324,15 @@ Luego en openCode:
 
 
 En el curso se usa :
-OpenSpec - Explore y new
+OpenSpec - Explore y new  (Inicia un debate arquitectónico y planificar soluciones antes de generar artefactos.)
 OpenSpec - Apply
-OpenSpec - Verify
-OpenSpec - Archive
+OpenSpec - Verify (Para desplegar un panel de control (dashboard) en tiempo real para visualizar el progreso de las tareas y especificaciones)
+OpenSpec - Archive (Para mover los artefactos terminados a un historial para preservar las decisiones arquitectónicas.)
 
 
 
 `/opsx-explore Necesitamos hacer una separación entre el panel del staff y la parte de la familia`
+
 Ejemplo de preguntas y respuestas¿Cómo lo estás pensando vos? ¿Querés que sean:
 
 A) Rutas separadas (/staff y /family) con layouts propios y middleware que redirige según rol
@@ -388,6 +391,8 @@ Current profile settings
 
 
 `openspec view`
+Esto lo que hace es Desplegar un panel de control (dashboard) en tiempo real para visualizar el progreso de las tareas y especificaciones.
+
 
 `Sí apliquemos la parte de las correcciones de los Critical Issues encontrados`
 
